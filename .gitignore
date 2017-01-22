@@ -45,3 +45,10 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+*.class
+neo4j_demo/.project
+*.classpath
+neo4j_demo/.settings/org.eclipse.core.resources.prefs
+*.prefs
+neo4j_demo/target/classes/META-INF/MANIFEST.MF
+*.properties
