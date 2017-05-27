@@ -1,4 +1,4 @@
-package com.xc.label;
+package com.xc.demos.label;
 
 import org.neo4j.graphdb.RelationshipType;
 

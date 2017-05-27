@@ -53,3 +53,6 @@ neo4j_demo/.settings/org.eclipse.core.resources.prefs
 neo4j_demo/target/classes/META-INF/MANIFEST.MF
 *.properties
 neo4j_with_spring_boot/.project
+*.iml
+*knowledge/
+

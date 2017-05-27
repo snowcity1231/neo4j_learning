@@ -1,15 +1,12 @@
-package com.xc;
+package com.xc.demos;
 
 import java.io.File;
 
-import org.neo4j.graphdb.GraphDatabaseService;
-import org.neo4j.graphdb.Node;
-import org.neo4j.graphdb.Relationship;
-import org.neo4j.graphdb.Transaction;
+import org.neo4j.graphdb.*;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 
-import com.xc.label.MyLabels;
-import com.xc.label.MyRelationshipTypes;
+import com.xc.demos.label.MyLabels;
+import com.xc.demos.label.MyRelationshipTypes;
 
 /** 
 * @ClassName: Neo4jDemo 
@@ -83,6 +80,10 @@ public class Neo4jDemo {
 	        relationship3.setProperty("stars", 4);
 	        Relationship relationship4 = user3.createRelationshipTo(movie2, MyRelationshipTypes.HAS_SEEN);
 	        relationship4.setProperty("stars", 5);
+
+	        //删除电影节点Heat
+			movie3.getSingleRelationship(MyRelationshipTypes.HAS_SEEN, Direction.INCOMING).delete();
+			movie3.delete();
 	        
 	        
 	        System.out.println("成功");
