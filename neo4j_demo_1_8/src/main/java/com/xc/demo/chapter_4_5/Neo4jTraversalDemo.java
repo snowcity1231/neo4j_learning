@@ -1,4 +1,4 @@
-package com.xc.demo;
+package com.xc.demo.chapter_4_5;
 
 import org.neo4j.graphdb.*;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
@@ -55,7 +55,7 @@ public class Neo4jTraversalDemo {
     /**
      * 遍历获取朋友以及朋友的朋友
      * @param person 人物节点
-     * @return 遍历该任务认识的人
+     * @return 遍历该人物认识的人
      */
     private static Traverser getFriends(final Node person) {
         TraversalDescription td = Traversal.description()
@@ -109,35 +109,6 @@ public class Neo4jTraversalDemo {
         output.append("Number of hackers found : ").append(numberOfHackers).append("\n");
 
         System.out.println(output.toString());
-    }
-
-    /**
-     * 定义如何游走这个路径
-     */
-    private static void definePath() {
-        final ArrayList<RelationshipType> orderedPathContext = new ArrayList<>();
-//        orderedPathContext.add(RelTypes.REL1);
-//        orderedPathContext.add(RelTypes.REL2);
-//        orderedPathContext.add(RelTypes.REL3);
-
-        TraversalDescription td = Traversal.description()
-                .evaluator(new Evaluator() {
-                    @Override
-                    public Evaluation evaluate(Path path) {
-                        if ( path.length() == 0 )
-                        {
-                            return Evaluation.EXCLUDE_AND_CONTINUE;
-                        }
-                        RelationshipType expectedType = orderedPathContext.get( path.length() - 1 );
-                        boolean isExpectedType = path.lastRelationship()
-                                .isType( expectedType );
-                        boolean included = path.length() == orderedPathContext.size()
-                                && isExpectedType;
-                        boolean continued = path.length() < orderedPathContext.size()
-                                && isExpectedType;
-                        return Evaluation.of( included, continued );
-                    }
-                });
     }
 
     private enum  RelTypes implements RelationshipType {
